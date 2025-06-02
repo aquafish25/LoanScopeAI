@@ -70,13 +70,6 @@ For a PyTorch implementation reference, see:
 ---
 
 
-## 📄 References
-
-- **Paper**: [TabTransformer: Tabular Data Modeling Using Contextual Embeddings](https://arxiv.org/abs/2012.06678)
-- **GitHub**: [lucidrains/tab-transformer-pytorch](https://github.com/lucidrains/tab-transformer-pytorch)
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
