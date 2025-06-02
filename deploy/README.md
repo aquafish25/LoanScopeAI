@@ -32,3 +32,4 @@ Visit `http://localhost:5000` in your browser.
 
 ---
 
+![image](https://github.com/user-attachments/assets/4c1f41f4-f24b-4494-b0bc-18b3725db0ac)
