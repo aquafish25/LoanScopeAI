@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Eligibility Result - LoanScopeAI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .result-content {
+            padding: 40px;
+        }
+
+        .result-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .approved {
+            color: #10b981;
+        }
+
+        .rejected {
+            color: #ef4444;
+        }
+
+        .result-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .confidence-text {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .confidence-bar {
+            width: 100%;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-left: 4px solid #4f46e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <div class="header">
+            <h1>🏦 LoanScopeAI</h1>
+            <p>Loan Eligibility Result</p>
+        </div>
+
+        <div class="result-content">
+            {% if prediction == 'Fully Paid' %}
+                <div class="result-icon approved">✅</div>
+                <div class="result-text approved">Loan Approved!</div>
+                <p>Congratulations! Based on our AI analysis, your loan application shows a high probability of approval.</p>
+            {% else %}
+                <div class="result-icon rejected">❌</div>
+                <div class="result-text rejected">Loan Not Approved</div>
+                <p>Unfortunately, based on our AI analysis, your loan application may face challenges in approval.</p>
+            {% endif %}
+
+            <div class="confidence-text">
+                Confidence Level: {{ confidence }}%
+            </div>
+
+            <div class="confidence-bar">
+                <div class="confidence-fill" style="width: {{ confidence }}%"></div>
+            </div>
+
+            <a href="/" class="back-btn">Check Another Application</a>
+
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This is an AI-based prediction for informational purposes only. 
+                The actual loan approval decision may vary based on additional factors and lender policies. 
+                Please consult with financial institutions for official loan applications.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate confidence bar on load
+        window.addEventListener('load', function() {
+            const fill = document.querySelector('.confidence-fill');
+            fill.style.width = '0%';
+            setTimeout(() => {
+                fill.style.width = '{{ confidence }}%';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
