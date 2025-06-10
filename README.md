@@ -1,6 +1,8 @@
 # LoanScopeAI
 LoanScopeAI is a tool that predicts loan eligibility by analyzing applicant data for smarter, faster lending decisions.
+
 url - https://aquafish25-loanscopeai-app-pikbdg.streamlit.app/
+
 ## 📘 Overview
 
 This repository provides a comprehensive implementation of the **TabTransformer** architecture. The TabTransformer leverages Transformer-based self-attention mechanisms to model relationships among categorical features, offering enhanced performance over traditional methods.
